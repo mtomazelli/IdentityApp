@@ -1,0 +1,22 @@
+﻿apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+    name: ingress-srv
+    annotations:
+        kubernetes.io/ingress.class: "nginx"
+        nginx.ingress.kubernetes.io/use-regex: 'true'
+        cert-manager.io/cluster-issuer: letsencrypt-prod  # avisa ao ingress que estamos usando certificados
+        nginx.ingress.kubernetes.io/ssl-redirect: 'true'  # força o usuário a acessar via https
+spec:
+    rules:
+        - host: identity.grupopoli.net
+          http:
+              paths:
+                  - path: /
+                    backend:
+                        serviceName: identity-srv
+                        servicePort: 5000
+    tls:
+        - hosts:
+            - identity.grupopoli.net
+          secretName: identity-grupopoli-secret

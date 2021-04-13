@@ -90,7 +90,7 @@ namespace IdentityApp
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection(); // Para testar sem a necessidade dos certificados
 
             app.UseStaticFiles(); // Posso usar os arquivos ´de páginas estáticas de confirmação de email
 

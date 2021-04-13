@@ -1,0 +1,7 @@
+﻿apiVersion: v1
+kind: Service
+metadata:
+    name: identitydb
+spec:
+    type: ExternalName
+    externalName: benefits-server.database.windows.net
